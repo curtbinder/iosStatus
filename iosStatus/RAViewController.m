@@ -11,10 +11,14 @@
 #import "RAXMLParser.h"
 #import "RAHost.h"
 
+const int TIMEOUT_VALUE = 15;
+
 @interface RAViewController ()
 {
     RAController *_ra;
     RAHost *_host;
+    NSMutableData *_xmlData;
+    NSURLConnection *_conn;
 }
 
 @end
@@ -42,6 +46,8 @@
     
     _ra = [[RAController alloc] init];
     _host = [[RAHost alloc] init];
+    _xmlData = nil;
+    _conn = nil;
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [self setHostValues:[prefs stringForKey:@"host_preference"]
@@ -135,22 +141,72 @@
     // get the values in the /r99 format
     // store HOST and PORT inside settings
     NSString *address = [NSString stringWithFormat:@"%@/r99", [_host getControllerUrlString]];
-    NSURL *url = [[NSURL alloc]initWithString:address];
+    NSURL *url = [[NSURL alloc] initWithString:address];
     NSLog(@"%@", url);
+    // TODO allow to customize the timeout value
+    NSURLRequest *req = [
+                         [NSURLRequest alloc] initWithURL:url
+                         cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
+                         timeoutInterval:TIMEOUT_VALUE];
     
-    /* 
-     TODO Verify that URL is correct before parsing
-     Verify timeouts
-     Handle timeouts and display error warning.
-     Display URL that was used (host & port combination)
-     */
+    // create a new array for the xml data
+    _xmlData = [NSMutableData dataWithCapacity:0];
     
-    /*
-     TODO Launch asynchronously in background
-     */
-    // store values in controller object
+    // create the connection
+    _conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+    if ( ! _conn ) {
+        _xmlData = nil;
+        [self displayAlert:@"Error"
+                          :[NSString stringWithFormat:@"Connection failed to: %@",
+                            [_host getControllerUrlString]]];
+    }
+}
+
+// Connection Delegates
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    // server has responded
+    // can be called multiple times
+    
+    // set the data length to 0
+    [_xmlData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    // data was received, so append it to the array
+    [_xmlData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    // error occurred, notify the user of the error
+    // free up the received data and possibly the connection
+    _xmlData = nil;
+    _conn = nil;
+    
+    // display the error
+    NSString *msg = [NSString stringWithFormat:@"%@\n%@",
+                     [error localizedDescription],
+                     [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]];
+    [self displayAlert:@"Connection Failed" :msg];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    // clear out the connection
+    _conn = nil;
+    
+    // do something with the data
+    [self parseData];
+}
+
+- (void)parseData
+{
+    NSLog(@"Parse XML data");
+    
     // create and init parser object
-    NSXMLParser *xml = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    NSXMLParser *xml = [[NSXMLParser alloc] initWithData:_xmlData];
     // create and init our delegate
     RAXMLParser *parser = [[RAXMLParser alloc] initXMLParser];
     // set delegate
@@ -161,7 +217,12 @@
     // test the result
     if ( success ) {
         NSLog(@"Successfully parsed");
+        // save the data on success
+        // clear out data after we have it saved
+        _xmlData = nil;
     } else {
+        // clear out the data on failure
+        _xmlData = nil;
         NSLog(@"Error parsing");
         [self displayAlert:@"Error" :@"Error parsing XML data"];
         return;
@@ -206,7 +267,6 @@
 - (void)defaultPrefsChanged:(NSNotification *)notification
 {
     // preferences changed, update values
-    NSLog(@"prefs changed");
     NSUserDefaults *defs = (NSUserDefaults *)[notification object];
     [self setHostValues:[defs stringForKey:@"host_preference"]
                        :[defs stringForKey:@"port_preference"]
