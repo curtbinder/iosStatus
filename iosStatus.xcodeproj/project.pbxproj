@@ -27,6 +27,7 @@
 		D7201BD3180DADEB003BA1FC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7201BD2180DADEB003BA1FC /* XCTest.framework */; };
 		D7201BD4180DADEB003BA1FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7201BB3180DADEB003BA1FC /* Foundation.framework */; };
 		D7201BD5180DADEB003BA1FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7201BB7180DADEB003BA1FC /* UIKit.framework */; };
+		D7EB90521814369600897EFC /* RARelayBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EB90511814369600897EFC /* RARelayBox.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		D7201BB7180DADEB003BA1FC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D7201BD1180DADEB003BA1FC /* iosStatusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosStatusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7201BD2180DADEB003BA1FC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D7EB90501814369600897EFC /* RARelayBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RARelayBox.h; sourceTree = SOURCE_ROOT; };
+		D7EB90511814369600897EFC /* RARelayBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RARelayBox.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,8 @@
 				D701A88F18133251008216C5 /* RAHost.m */,
 				D701A89018133251008216C5 /* RANumber.h */,
 				D701A89118133251008216C5 /* RANumber.m */,
+				D7EB90501814369600897EFC /* RARelayBox.h */,
+				D7EB90511814369600897EFC /* RARelayBox.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7EB90521814369600897EFC /* RARelayBox.m in Sources */,
 				D701A89718133251008216C5 /* RAController.m in Sources */,
 				D701A89618133251008216C5 /* RAAppDelegate.m in Sources */,
 				D701A89818133251008216C5 /* RAHost.m in Sources */,
