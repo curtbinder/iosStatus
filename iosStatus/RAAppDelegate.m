@@ -14,8 +14,12 @@
 {
     // Override point for customization after application launch.
     
-    // Subclass NSDictionary with Default Values for preferences
-    // Defaults include the Labels that are not visible currently in the settings bundle
+    /* 
+     TODO default values
+     
+     Subclass NSDictionary with Default Values for preferences
+     Defaults include the Labels that are not visible currently in the settings bundle
+     */
     // Register default preferences here
     NSDictionary *appDefaults = [NSDictionary
                                  dictionaryWithObject:@"2000" forKey:@"port_preference"];
@@ -43,14 +47,6 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
-    // TODO figure out how to register for changes using NSUserDefaultsDidChangeNotification
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs synchronize];
-    _host = [prefs stringForKey:@"host_preference"];
-    _port = [prefs stringForKey:@"port_preference"];
-    _username = [prefs stringForKey:@"username_preference"];
-//    NSLog(@"Active: H: %@\nP: %@\nU: %@", _host, _port, _username);
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

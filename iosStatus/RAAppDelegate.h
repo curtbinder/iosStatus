@@ -11,8 +11,5 @@
 @interface RAAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic) NSString *host;
-@property (nonatomic) NSString *port;
-@property (nonatomic) NSString *username;
 
 @end

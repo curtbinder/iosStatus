@@ -122,8 +122,18 @@
     NSString *address = [NSString stringWithFormat:@"%@/r99", [_host getControllerUrlString]];
     NSURL *url = [[NSURL alloc]initWithString:address];
     NSLog(@"%@", url);
-    // store values in controller object
     
+    /* 
+     TODO Verify that URL is correct before parsing
+     Verify timeouts
+     Handle timeouts and display error warning.
+     Display URL that was used (host & port combination)
+     */
+    
+    /*
+     TODO Launch asynchronously in background
+     */
+    // store values in controller object
     // create and init parser object
     NSXMLParser *xml = [[NSXMLParser alloc] initWithContentsOfURL:url];
     // create and init our delegate
