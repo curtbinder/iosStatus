@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RANumber.h"
+#import "RARelayBox.h"
 
 @interface RAController : NSObject
 
@@ -26,5 +27,6 @@
 @property RANumber* orp;
 @property short expansionModules;
 @property short relayExpansionModules;
+@property RARelayBox* main;
 
 @end

@@ -30,6 +30,7 @@
         _orp = [[RANumber alloc] initWithValues:1 :@"mV"];
         _expansionModules = 0;
         _relayExpansionModules = 0;
+        _main = [[RARelayBox alloc] init];
         // add in relays and additional modules
     }
     

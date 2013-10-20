@@ -109,8 +109,14 @@
         [_ra.orp setValue:[currentElementValue intValue]];
     } else if ( [tag isEqualToString:@"WL"] ) {
         [_ra.water setValue:[currentElementValue intValue]];
+    } else if ( [tag isEqualToString:@"R"] ) {
+        [_ra.main setData:[currentElementValue intValue]];
+    } else if ( [tag isEqualToString:@"RON"] ) {
+        [_ra.main setMaskOn:[currentElementValue intValue]];
+    } else if ( [tag isEqualToString:@"ROFF"] ) {
+        [_ra.main setMaskOff:[currentElementValue intValue]];
         
-        // ADD IN R, RON, ROFF, LOGDATE here
+        // ADD IN LOGDATE here
     } else if ( [tag isEqualToString:@"REM"] ) {
         _ra.relayExpansionModules = [currentElementValue intValue];
     } else if ( [tag isEqualToString:@"EM"] ) {
