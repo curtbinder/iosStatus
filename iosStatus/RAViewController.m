@@ -21,6 +21,21 @@
 
 @implementation RAViewController
 
+/*
+- (void)loadView
+{
+    // Handle programmatically adding contents to the scroll view
+    CGRect fullScreenRect = [[UIScreen mainScreen] applicationFrame];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:fullScreenRect];
+    scrollView.contentSize = CGSizeMake(320, 758);
+    
+    // add any further subviews
+    
+    
+    self.view = scrollView;
+}
+*/
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
