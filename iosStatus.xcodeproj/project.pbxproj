@@ -27,7 +27,7 @@
 		D7201BD3180DADEB003BA1FC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7201BD2180DADEB003BA1FC /* XCTest.framework */; };
 		D7201BD4180DADEB003BA1FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7201BB3180DADEB003BA1FC /* Foundation.framework */; };
 		D7201BD5180DADEB003BA1FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7201BB7180DADEB003BA1FC /* UIKit.framework */; };
-		D7EB90521814369600897EFC /* RARelayBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EB90511814369600897EFC /* RARelayBox.m */; };
+		D7FD50B918180E3B00D0A5F2 /* RARelayBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FD50B818180E3B00D0A5F2 /* RARelayBox.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,8 +69,8 @@
 		D7201BB7180DADEB003BA1FC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D7201BD1180DADEB003BA1FC /* iosStatusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosStatusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7201BD2180DADEB003BA1FC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		D7EB90501814369600897EFC /* RARelayBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RARelayBox.h; sourceTree = SOURCE_ROOT; };
-		D7EB90511814369600897EFC /* RARelayBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RARelayBox.m; sourceTree = SOURCE_ROOT; };
+		D7FD50B718180E3B00D0A5F2 /* RARelayBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RARelayBox.h; path = iosStatus/RARelayBox.h; sourceTree = SOURCE_ROOT; };
+		D7FD50B818180E3B00D0A5F2 /* RARelayBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RARelayBox.m; path = iosStatus/RARelayBox.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,14 +100,14 @@
 		D701A8861813211E008216C5 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D7FD50B718180E3B00D0A5F2 /* RARelayBox.h */,
+				D7FD50B818180E3B00D0A5F2 /* RARelayBox.m */,
 				D701A88C18133251008216C5 /* RAController.h */,
 				D701A88D18133251008216C5 /* RAController.m */,
 				D701A88E18133251008216C5 /* RAHost.h */,
 				D701A88F18133251008216C5 /* RAHost.m */,
 				D701A89018133251008216C5 /* RANumber.h */,
 				D701A89118133251008216C5 /* RANumber.m */,
-				D7EB90501814369600897EFC /* RARelayBox.h */,
-				D7EB90511814369600897EFC /* RARelayBox.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -302,9 +302,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7EB90521814369600897EFC /* RARelayBox.m in Sources */,
 				D701A89718133251008216C5 /* RAController.m in Sources */,
 				D701A89618133251008216C5 /* RAAppDelegate.m in Sources */,
+				D7FD50B918180E3B00D0A5F2 /* RARelayBox.m in Sources */,
 				D701A89818133251008216C5 /* RAHost.m in Sources */,
 				D701A89B18133251008216C5 /* RAXMLParser.m in Sources */,
 				D701A89918133251008216C5 /* RANumber.m in Sources */,
@@ -364,7 +364,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -403,7 +402,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -437,13 +435,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Curt Binder (8C7FJ837D3)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/iosStatus/iosStatus-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/iosStatus/iosStatus-Info.plist";
 				PRODUCT_NAME = iosStatus;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "35D74817-838D-4C2F-B218-9C74982B47C7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -453,13 +451,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Curt Binder (8BAPTYQUMD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/iosStatus/iosStatus-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/iosStatus/iosStatus-Info.plist";
 				PRODUCT_NAME = iosStatus;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "35D74817-838D-4C2F-B218-9C74982B47C7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -467,7 +465,6 @@
 		D7201BE6180DADEB003BA1FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ReefAngelStatus.app/ReefAngelStatus";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -490,7 +487,6 @@
 		D7201BE7180DADEB003BA1FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ReefAngelStatus.app/ReefAngelStatus";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
