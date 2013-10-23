@@ -457,7 +457,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/iosStatus/iosStatus-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/iosStatus/iosStatus-Info.plist";
 				PRODUCT_NAME = iosStatus;
-				PROVISIONING_PROFILE = "35D74817-838D-4C2F-B218-9C74982B47C7";
+				PROVISIONING_PROFILE = "0979E598-EF61-4003-9BB6-CEB86D44C792";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
