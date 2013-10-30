@@ -54,7 +54,6 @@ const int TIMEOUT_VALUE = 15;
                        :[prefs stringForKey:@"port_preference"]
                        :[prefs stringForKey:@"username_preference"] ];
     
-    
     // update labels from memory
     [self updateLabelNames];
     
@@ -141,7 +140,8 @@ const int TIMEOUT_VALUE = 15;
     // get the values in the /r99 format
     // store HOST and PORT inside settings
     NSString *address = [NSString stringWithFormat:@"%@/r99", [_host getControllerUrlString]];
-    NSURL *url = [[NSURL alloc] initWithString:address];
+    NSString *encodedUrl = [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [[NSURL alloc] initWithString:encodedUrl];
     NSLog(@"%@", url);
     // TODO allow to customize the timeout value
     NSURLRequest *req = [
@@ -259,9 +259,9 @@ const int TIMEOUT_VALUE = 15;
 
 - (void)setHostValues:(NSString *)host :(NSString *)port :(NSString *)username
 {
-    [_host setHost:host];
-    [_host setPort:port];
-    [_host setUsername:username];
+    [_host setHost:[host stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+    [_host setPort:[port stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+    [_host setUsername:[username stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
 }
 
 - (void)defaultPrefsChanged:(NSNotification *)notification

@@ -17,6 +17,7 @@
 
 - (NSString *) getControllerUrlString;
 {
+    // Don't encode the controller string here since we have additional arguments to send
     NSString *address = [NSString stringWithFormat:@"http://%@:%@", _host, _port];
     return address;
 }
@@ -28,7 +29,9 @@
     }
     NSString *address = [NSString
                          stringWithFormat:@"http://forum.reefangel.com/status/params.aspx?id=%@", _username];
-    NSURL *url = [[NSURL alloc]initWithString:address];
+    // encode the URL string here since we will be using the URL
+    NSString *encodedUrl = [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [[NSURL alloc] initWithString:encodedUrl];
     return url;
 }
 
@@ -39,7 +42,9 @@
     }
     NSString *address = [NSString
                          stringWithFormat:@"http://forum.reefangel.com/status/labels.aspx?id=%@", _username];
-    NSURL *url = [[NSURL alloc]initWithString:address];
+    // encode the URL string here since we will be using the URL
+    NSString *encodedUrl = [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [[NSURL alloc] initWithString:encodedUrl];
     return url;
 }
 
