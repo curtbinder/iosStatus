@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-extern const Byte PORT_OFF;
-extern const Byte PORT_ON;
-extern const Byte PORT_STATE_OFF;
-extern const Byte PORT_STATE_ON;
-extern const Byte PORT_STATE_AUTO;
+extern const short PORT_OFF;
+extern const short PORT_ON;
+extern const short PORT_STATE_OFF;
+extern const short PORT_STATE_ON;
+extern const short PORT_STATE_AUTO;
 
 @interface RARelayBox : NSObject
 
@@ -26,5 +26,7 @@ extern const Byte PORT_STATE_AUTO;
 - (short)getPortMaskOffValue:(int) port;
 - (short)getPortValue:(int) port;
 - (BOOL)isPortOn:(int) port :(BOOL) useMask;
+- (BOOL)isPortOverridden:(int) port;
+- (BOOL)isOverrideButtonShown:(int) port;
 
 @end

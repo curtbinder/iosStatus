@@ -13,6 +13,8 @@
 
 // Buttons
 - (IBAction)refresh;
+- (IBAction)toggleButton:(id)sender;
+- (IBAction)clearPortOverride:(id)sender;
 
 - (void)updateLabelNames;
 - (void)updateParameters;
@@ -50,5 +52,25 @@
 @property (nonatomic, weak) IBOutlet UILabel *orpValue;
 @property (nonatomic, weak) IBOutlet UILabel *pheValue;
 @property (nonatomic, weak) IBOutlet UILabel *waterValue;
+
+// Switches
+@property (nonatomic, weak) IBOutlet UISwitch *port1;
+@property (nonatomic, weak) IBOutlet UISwitch *port2;
+@property (nonatomic, weak) IBOutlet UISwitch *port3;
+@property (nonatomic, weak) IBOutlet UISwitch *port4;
+@property (nonatomic, weak) IBOutlet UISwitch *port5;
+@property (nonatomic, weak) IBOutlet UISwitch *port6;
+@property (nonatomic, weak) IBOutlet UISwitch *port7;
+@property (nonatomic, weak) IBOutlet UISwitch *port8;
+
+// Port Override Buttons
+@property (nonatomic, weak) IBOutlet UIButton *port1Override;
+@property (nonatomic, weak) IBOutlet UIButton *port2Override;
+@property (nonatomic, weak) IBOutlet UIButton *port3Override;
+@property (nonatomic, weak) IBOutlet UIButton *port4Override;
+@property (nonatomic, weak) IBOutlet UIButton *port5Override;
+@property (nonatomic, weak) IBOutlet UIButton *port6Override;
+@property (nonatomic, weak) IBOutlet UIButton *port7Override;
+@property (nonatomic, weak) IBOutlet UIButton *port8Override;
 
 @end

@@ -8,18 +8,44 @@
 
 #import "RAHost.h"
 
+// Request commands
+NSString *REQ_MEMORYBYE = @"/mb";
+NSString *REQ_MEMORYINT = @"/mi";
+NSString *REQ_STATUS = @"/r99";
+NSString *REQ_DATETIME = @"/d";
+NSString *REQ_VERSION = @"/v";
+NSString *REQ_FEEDINGMODE = @"/mf";
+NSString *REQ_WATERMODE = @"/mw";
+NSString *REQ_ATOCLEAR = @"/mt";
+NSString *REQ_OVERHEATCLEAR = @"/mo";
+NSString *REQ_EXITMODE = @"/bp";
+NSString *REQ_RELAY = @"/r";
+NSString *REQ_LIGHTSON = @"/l1";
+NSString *REQ_LIGHTSOFF = @"/l0";
+NSString *REQ_PWMOVERRIDE = @"/po";
+NSString *REQ_NONE = @"";
+NSString *REQ_REEFANGEL = @"ra";
+
+// Portal URLS
+NSString *PORTAL_PARAMS_URL = @"http://forum.reefangel.com/status/params.aspx?id=";
+NSString *PORTAL_LABELS_URL = @"http://forum.reefangel.com/status/labels.aspx?id=";
+
 @implementation RAHost
 {
     NSString *_host;
     NSString *_port;
     NSString *_username;
+    NSString *_request;
+    int _location;
+    int _value;
+    BOOL _write;
 }
 
 - (NSString *) getControllerUrlString;
 {
-    // Don't encode the controller string here since we have additional arguments to send
-    NSString *address = [NSString stringWithFormat:@"http://%@:%@", _host, _port];
-    return address;
+    NSString *address = [NSString stringWithFormat:@"http://%@:%@%@", _host, _port, _request];
+    NSString *encodedUrl = [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    return encodedUrl;
 }
 
 - (NSURL *) getPortalParamsUrl
@@ -28,7 +54,7 @@
         return nil;
     }
     NSString *address = [NSString
-                         stringWithFormat:@"http://forum.reefangel.com/status/params.aspx?id=%@", _username];
+                         stringWithFormat:@"%@%@", PORTAL_PARAMS_URL, _username];
     // encode the URL string here since we will be using the URL
     NSString *encodedUrl = [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [[NSURL alloc] initWithString:encodedUrl];
@@ -41,7 +67,7 @@
         return nil;
     }
     NSString *address = [NSString
-                         stringWithFormat:@"http://forum.reefangel.com/status/labels.aspx?id=%@", _username];
+                         stringWithFormat:@"%@%@", PORTAL_LABELS_URL, _username];
     // encode the URL string here since we will be using the URL
     NSString *encodedUrl = [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [[NSURL alloc] initWithString:encodedUrl];
@@ -66,9 +92,19 @@
     _port = port;
 }
 
+- (void) setRequest:(NSString *)request
+{
+    _request = request;
+}
+
 - (void) setUsername:(NSString *)username
 {
     _username = username;
+}
+
+- (void) clearRequest
+{
+    _request = REQ_NONE;
 }
 
 - (id)init
@@ -84,6 +120,7 @@
         _host = host;
         _port = port;
         _username = @"";
+        _request = @"";
     }
     
     return self;

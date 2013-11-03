@@ -8,11 +8,11 @@
 
 #import "RARelayBox.h"
 
-const Byte PORT_OFF = 0;
-const Byte PORT_ON = 1;
-const Byte PORT_STATE_OFF = 0;
-const Byte PORT_STATE_ON = 1;
-const Byte PORT_STATE_AUTO = 2;
+const short PORT_OFF = 0;
+const short PORT_ON = 1;
+const short PORT_STATE_OFF = 0;
+const short PORT_STATE_ON = 1;
+const short PORT_STATE_AUTO = 2;
 
 @implementation RARelayBox
 
@@ -73,6 +73,24 @@ const Byte PORT_STATE_AUTO = 2;
         f = ([self getPortValue:port] != PORT_OFF);
     }
     return f;
+}
+
+- (BOOL)isPortOverridden:(int)port
+{
+    BOOL f = NO;
+    short status = [self getPortStatus:port];
+    if ( (status == PORT_STATE_ON) || (status == PORT_STATE_OFF) ) {
+        f = YES;
+    }
+    return f;
+}
+
+- (BOOL)isOverrideButtonShown:(int)port
+{
+    // returns the opposite of what the isPortOverridden function returns
+    // if the port is overridden, then you will want the button to be visible (aka NOT hidden)
+    // if it's not, then you will not want the button to be visible (aka hidden)
+    return ![self isPortOverridden:port];
 }
 
 @end
