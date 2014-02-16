@@ -1,0 +1,10 @@
+This is the copyright file for the iosStatus app created by Curt Binder.
+All files in this project fall under this license agreement even if not specifically added to the file. Some files are automatically generated and cannot have a copyright notice listed within them. For those files that do not have this noticed included, this file serves the purpose to display the copyright.
+
+
+Copyright (c) 2013 by Curt Binder (http://curtbinder.info)
+
+This work is licensed under the Creative Commons
+Attribution-ShareAlike 4.0 International License.
+To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/4.0/deed.en_US

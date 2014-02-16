@@ -21,6 +21,7 @@
 		D701A8B218133831008216C5 /* iosStatusTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D701A8A91813339F008216C5 /* iosStatusTests-Info.plist */; };
 		D701A8B318133835008216C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D701A8A71813339F008216C5 /* InfoPlist.strings */; };
 		D701A8B418133925008216C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D701A8AE181333EE008216C5 /* InfoPlist.strings */; };
+		D70783E518B06E65002BB0F9 /* copyright.txt in Resources */ = {isa = PBXBuildFile; fileRef = D70783E418B06E65002BB0F9 /* copyright.txt */; };
 		D7201BB4180DADEB003BA1FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7201BB3180DADEB003BA1FC /* Foundation.framework */; };
 		D7201BB6180DADEB003BA1FC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7201BB5180DADEB003BA1FC /* CoreGraphics.framework */; };
 		D7201BB8180DADEB003BA1FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7201BB7180DADEB003BA1FC /* UIKit.framework */; };
@@ -63,6 +64,7 @@
 		D701A8A91813339F008216C5 /* iosStatusTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "iosStatusTests-Info.plist"; path = "iosStatusTests/iosStatusTests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D701A8AA1813339F008216C5 /* iosStatusTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iosStatusTests.m; path = iosStatusTests/iosStatusTests.m; sourceTree = SOURCE_ROOT; };
 		D701A8AF181333EE008216C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = iosStatus/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		D70783E418B06E65002BB0F9 /* copyright.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = copyright.txt; path = iosStatus/copyright.txt; sourceTree = SOURCE_ROOT; };
 		D7201BB0180DADEB003BA1FC /* iosStatus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosStatus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7201BB3180DADEB003BA1FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D7201BB5180DADEB003BA1FC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -164,6 +166,7 @@
 				D701A89418133251008216C5 /* RAXMLParser.h */,
 				D701A89518133251008216C5 /* RAXMLParser.m */,
 				D7201BBA180DADEB003BA1FC /* Supporting Files */,
+				D70783E418B06E65002BB0F9 /* copyright.txt */,
 			);
 			name = iosStatus;
 			path = ReefAngelStatus;
@@ -279,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D70783E518B06E65002BB0F9 /* copyright.txt in Resources */,
 				D701A885181175DB008216C5 /* Settings.bundle in Resources */,
 				D701A8B418133925008216C5 /* InfoPlist.strings in Resources */,
 				D701A8A51813334E008216C5 /* Main.storyboard in Resources */,
