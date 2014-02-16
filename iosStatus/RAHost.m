@@ -82,6 +82,11 @@ NSString *PORTAL_LABELS_URL = @"http://forum.reefangel.com/status/labels.aspx?id
     return TRUE;
 }
 
+- (NSString *) getRequest
+{
+    return _request;
+}
+
 - (void) setHost:(NSString *)host
 {
     _host = host;

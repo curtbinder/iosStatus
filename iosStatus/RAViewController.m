@@ -234,6 +234,36 @@ const int TIMEOUT_VALUE = 15;
     ((UIButton*)sender).hidden = YES;
 }
 
+- (IBAction)modeActivated:(id)sender
+{
+    // index
+    // 0 - feeding mode
+    // 1 - water change mode
+    // 2 - exit mode
+    NSInteger index = [((UISegmentedControl*) sender) selectedSegmentIndex];
+    
+    NSString *req;
+    switch (index) {
+        case 0:
+            // feeding mode
+            req = REQ_FEEDINGMODE;
+            break;
+        case 1:
+            // water change mode
+            req = REQ_WATERMODE;
+            break;
+        case 2:
+            // exit mode
+            req = REQ_EXITMODE;
+            break;
+        default:
+            break;
+    }
+    NSLog(@"Send Command: %@", req);
+    [_host setRequest:req];
+    [self sendCommand];
+}
+
 - (void)downloadLabels
 {
     // Download the labels from portal
@@ -312,8 +342,16 @@ const int TIMEOUT_VALUE = 15;
     _conn = nil;
     
     // TODO check the request type and update appropriately based on request
-    // do something with the data
-    [self parseData];
+    NSString *req = [_host getRequest];
+    if ( (req == REQ_FEEDINGMODE) ||
+         (req == REQ_WATERMODE) ||
+        (req == REQ_EXITMODE) ) {
+        // just got the response from the modes, let's refresh the screen
+        [self downloadParameters];
+    } else {
+        // do something with the data
+        [self parseData];
+    }
 }
 
 - (void)parseData
@@ -387,5 +425,6 @@ const int TIMEOUT_VALUE = 15;
                        :[defs stringForKey:@"port_preference"]
                        :[defs stringForKey:@"username_preference"]];
 }
+
 
 @end

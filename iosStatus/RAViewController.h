@@ -15,6 +15,7 @@
 - (IBAction)refresh;
 - (IBAction)toggleButton:(id)sender;
 - (IBAction)clearPortOverride:(id)sender;
+- (IBAction)modeActivated:(id)sender;
 
 - (void)updateLabelNames;
 - (void)updateParameters;
@@ -72,5 +73,9 @@
 @property (nonatomic, weak) IBOutlet UIButton *port6Override;
 @property (nonatomic, weak) IBOutlet UIButton *port7Override;
 @property (nonatomic, weak) IBOutlet UIButton *port8Override;
+
+// Command Buttons
+@property (nonatomic, weak) IBOutlet UISegmentedControl *actionButtons;
+
 
 @end

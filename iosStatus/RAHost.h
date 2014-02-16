@@ -20,6 +20,7 @@
 - (void) setRequest:(NSString *)request;
 - (void) setUsername:(NSString *)username;
 - (void) clearRequest;
+- (NSString *) getRequest;
 
 - (id)init;
 - (id)initWithValues:(NSString *)host :(NSString *)port;
